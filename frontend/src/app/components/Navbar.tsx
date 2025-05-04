@@ -80,13 +80,14 @@ export default function Navbar() {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-gray-900/80 backdrop-blur-md' : 'bg-transparent'
+      isScrolled ? 'bg-black/80 backdrop-blur-md border-b border-[#01CE8D]/20' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
-            <Link href="/" className="text-2xl font-bold text-purple-500">
+            <Link href="/" className="text-2xl font-bold text-[#01CE8D] relative group">
               BlockCircle
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#01CE8D]/70 group-hover:w-full transition-all duration-300"></span>
             </Link>
           </div>
           <div className="hidden md:block">
@@ -102,15 +103,15 @@ export default function Navbar() {
                 disabled={isConnecting}
                 className={`px-4 py-2 rounded-full font-medium transition-all duration-300 ${
                   isConnected
-                    ? 'bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-600'
-                    : 'bg-purple-600 hover:bg-purple-700 text-white'
+                    ? 'bg-black hover:bg-black/80 text-white border border-[#01CE8D]/30 hover:border-[#01CE8D]/60'
+                    : 'bg-[#01CE8D] hover:bg-[#01CE8D]/90 text-black hover:shadow-lg hover:shadow-[#01CE8D]/20'
                 } ${isConnecting ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 {isConnecting ? (
                   'Connecting...'
                 ) : isConnected ? (
                   <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                    <div className="w-2 h-2 rounded-full bg-[#01CE8D]"></div>
                     <span>{`${signer.slice(0, 6)}...${signer.slice(-4)}`}</span>
                   </div>
                 ) : (
@@ -129,9 +130,10 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
   return (
     <Link
       href={href}
-      className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition-all duration-300 wand-trail"
+      className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-[#01CE8D] hover:bg-black/40 transition-all duration-300 relative group"
     >
       {children}
+      <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-[#01CE8D]/50 group-hover:w-4/5 transition-all duration-300"></span>
     </Link>
   )
 }

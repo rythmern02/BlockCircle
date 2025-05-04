@@ -888,18 +888,18 @@ export default function Dashboard() {
   console.log("the wallet connected is: ", account)
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-gray-900 text-white">
       <Navbar />
       <div className="pt-16 pb-12 px-4 sm:px-6 lg:px-8 flex">
         <aside className="w-64 mr-8">
           <nav className="space-y-2">
             {[
-              { name: 'Dashboard', icon: <BarChart className="mr-3" />, id: 'dashboard', color: 'from-black to-[#01CE8D]' },
-              { name: 'Profile', icon: <User className="mr-3" />, id: 'profile', color: 'from-black to-[#01CE8D]' },
-              { name: 'My Contributions', icon: <Wallet className="mr-3" />, id: 'contributions', color: 'from-black to-[#01CE8D]' },
-              { name: 'Auctions', icon: <Award className="mr-3" />, id: 'auctions', color: 'from-black to-[#01CE8D]' },
-              { name: 'Lottery', icon: <Zap className="mr-3" />, id: 'lottery', color: 'from-black to-[#01CE8D]' },
-              { name: 'Settings', icon: <Settings className="mr-3" />, id: 'settings', color: 'from-black to-[#01CE8D]' },
+              { name: 'Dashboard', icon: <BarChart className="mr-3" />, id: 'dashboard', color: 'from-purple-500 to-pink-500' },
+              { name: 'Profile', icon: <User className="mr-3" />, id: 'profile', color: 'from-blue-500 to-cyan-500' },
+              { name: 'My Contributions', icon: <Wallet className="mr-3" />, id: 'contributions', color: 'from-green-500 to-teal-500' },
+              { name: 'Auctions', icon: <Award className="mr-3" />, id: 'auctions', color: 'from-yellow-500 to-orange-500' },
+              { name: 'Lottery', icon: <Zap className="mr-3" />, id: 'lottery', color: 'from-blue-500 to-indigo-500' },
+              { name: 'Settings', icon: <Settings className="mr-3" />, id: 'settings', color: 'from-red-500 to-pink-500' },
             ].map((item) => (
               <motion.button
                 key={item.id}
@@ -907,8 +907,8 @@ export default function Dashboard() {
                 whileTap={{ scale: 0.98 }}
                 className={`w-full flex items-center px-4 py-3 rounded-lg text-left font-medium transition-all duration-200 ${
                   activeTab === item.id 
-                    ? `bg-gradient-to-r ${item.color} text-white shadow-lg border border-[#01CE8D]/30` 
-                    : 'text-gray-400 hover:text-[#01CE8D] hover:bg-black/40 border border-transparent'
+                    ? `bg-gradient-to-r ${item.color} text-white shadow-lg` 
+                    : 'text-gray-400 hover:text-white hover:bg-gray-800'
                 }`}
                 onClick={() => setActiveTab(item.id)}
               >
@@ -918,7 +918,7 @@ export default function Dashboard() {
             ))}
           </nav>
         </aside>
-        <main className="flex-1 bg-black/80 rounded-lg p-6 shadow-lg border border-[#01CE8D]/20">
+        <main className="flex-1 bg-gray-800 rounded-lg p-6 shadow-lg">
           {renderContent()}
         </main>
       </div>
@@ -930,41 +930,41 @@ export default function Dashboard() {
 function DashboardContent({ contract, account }: any) {
   return (
     <div className="space-y-6">
-      <h2 className="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#01CE8D] to-white">Dashboard Overview</h2>
+      <h2 className="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">Dashboard Overview</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {[
-          { title: 'Total Balance', value: '5,280 ETH ', icon: <DollarSign className="h-8 w-8" />, color: 'from-black to-[#01CE8D]' },
-          { title: 'Active Chits', value: '3', icon: <Users className="h-8 w-8" />, color: 'from-black to-[#01CE8D]' },
-          { title: 'Next Auction', value: '2d 5h 30m', icon: <Award className="h-8 w-8" />, color: 'from-black to-[#01CE8D]' },
-          { title: 'Profit/Loss', value: '+210 ETH ', icon: <TrendingUp className="h-8 w-8" />, color: 'from-black to-[#01CE8D]' },
+          { title: 'Total Balance', value: '5,280 ETH ', icon: <DollarSign className="h-8 w-8" />, color: 'from-green-400 to-blue-500' },
+          { title: 'Active Chits', value: '3', icon: <Users className="h-8 w-8" />, color: 'from-purple-400 to-pink-500' },
+          { title: 'Next Auction', value: '2d 5h 30m', icon: <Award className="h-8 w-8" />, color: 'from-yellow-400 to-orange-500' },
+          { title: 'Profit/Loss', value: '+210 ETH ', icon: <TrendingUp className="h-8 w-8" />, color: 'from-blue-400 to-indigo-500' },
         ].map((item, index) => (
-          <div key={index} className={`bg-gradient-to-br ${item.color} p-6 rounded-lg shadow-lg border border-[#01CE8D]/30`}>
+          <div key={index} className={`bg-gradient-to-br ${item.color} p-6 rounded-lg shadow-lg`}>
             <div className="flex justify-between items-center">
               <div>
-                <p className="text-lg font-semibold text-[#01CE8D]">{item.title}</p>
+                <p className="text-lg font-semibold text-gray-100">{item.title}</p>
                 <p className="text-2xl font-bold text-white mt-2">{item.value}</p>
               </div>
-              <div className="bg-[#01CE8D]/20 text-[#01CE8D] p-3 rounded-full">
+              <div className="bg-white bg-opacity-30 p-3 rounded-full">
                 {item.icon}
               </div>
             </div>
           </div>
         ))}
       </div>
-      <div className="mt-8 bg-black/50 p-6 rounded-lg shadow-lg border border-[#01CE8D]/30">
-        <h3 className="text-xl font-semibold mb-4 text-[#01CE8D]">Recent Activity</h3>
+      <div className="mt-8 bg-gray-700 p-6 rounded-lg shadow-lg">
+        <h3 className="text-xl font-semibold mb-4">Recent Activity</h3>
         <ul className="space-y-4">
           {[
             { action: 'Contributed to Chit #1', amount: '100 ETH ', time: '2 hours ago' },
             { action: 'Won Auction for Chit #2', amount: '500 ETH ', time: '1 day ago' },
             { action: 'Joined new Chit Fund', amount: '50 ETH ', time: '3 days ago' },
           ].map((activity, index) => (
-            <li key={index} className="flex justify-between items-center border-b border-[#01CE8D]/20 pb-2">
+            <li key={index} className="flex justify-between items-center border-b border-gray-600 pb-2">
               <div>
                 <p className="font-medium">{activity.action}</p>
                 <p className="text-sm text-gray-400">{activity.time}</p>
               </div>
-              <span className="text-[#01CE8D] font-semibold">{activity.amount}</span>
+              <span className="text-green-400 font-semibold">{activity.amount}</span>
             </li>
           ))}
         </ul>
@@ -1021,107 +1021,50 @@ function ContributionsContent({ contract, account }: any) {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#01CE8D] to-white">
+      <h2 className="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-teal-600">
         My Contributions
       </h2>
 
-      {/* Stats Dashboard with 3D effect */}
+      {/* Member Stats */}
       {memberInfo && (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-          <motion.div 
-            whileHover={{ translateY: -5 }}
-            className="bg-gradient-to-br from-black to-black/60 p-6 rounded-lg shadow-lg border border-[#01CE8D]/30 relative overflow-hidden backdrop-blur-sm"
-          >
-            <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full bg-[#01CE8D]/10 z-0"></div>
-            <div className="absolute top-0 left-0 w-2 h-full bg-[#01CE8D]"></div>
-            <p className="text-sm text-[#01CE8D]">Total Contributions</p>
-            <p className="text-3xl font-bold mt-2 z-10 relative">{memberInfo.totalContributions} SOL</p>
-            <div className="w-full h-1 bg-[#01CE8D]/20 mt-4">
-              <div className="h-1 bg-[#01CE8D]" style={{width: '70%'}}></div>
-            </div>
-          </motion.div>
-          
-          <motion.div 
-            whileHover={{ translateY: -5 }}
-            className="bg-gradient-to-br from-black to-black/60 p-6 rounded-lg shadow-lg border border-[#01CE8D]/30 relative overflow-hidden backdrop-blur-sm"
-          >
-            <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full bg-[#01CE8D]/10 z-0"></div>
-            <div className="absolute top-0 left-0 w-2 h-full bg-[#01CE8D]"></div>
-            <p className="text-sm text-[#01CE8D]">Pools Participated</p>
-            <p className="text-3xl font-bold mt-2 z-10 relative">{memberInfo.poolsParticipated}</p>
-            <div className="flex mt-4 space-x-1">
-              {[...Array(5)].map((_, i) => (
-                <div key={i} className={`h-1 flex-1 ${i < parseInt(memberInfo.poolsParticipated) ? 'bg-[#01CE8D]' : 'bg-[#01CE8D]/20'}`}></div>
-              ))}
-            </div>
-          </motion.div>
-          
-          <motion.div 
-            whileHover={{ translateY: -5 }}
-            className="bg-gradient-to-br from-black to-black/60 p-6 rounded-lg shadow-lg border border-[#01CE8D]/30 relative overflow-hidden backdrop-blur-sm"
-          >
-            <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full bg-[#01CE8D]/10 z-0"></div>
-            <div className="absolute top-0 left-0 w-2 h-full bg-[#01CE8D]"></div>
-            <p className="text-sm text-[#01CE8D]">Active Collateral</p>
-            <p className="text-3xl font-bold mt-2 z-10 relative">{memberInfo.activeCollateral} SOL</p>
-            <div className="w-full h-1 bg-[#01CE8D]/20 mt-4">
-              <div className="h-1 bg-[#01CE8D]" style={{width: '60%'}}></div>
-            </div>
-          </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div className="bg-gray-700 p-4 rounded-lg">
+            <p className="text-gray-400">Total Contributions</p>
+            <p className="text-2xl font-bold">{memberInfo.totalContributions} SOL</p>
+          </div>
+          <div className="bg-gray-700 p-4 rounded-lg">
+            <p className="text-gray-400">Pools Participated</p>
+            <p className="text-2xl font-bold">{memberInfo.poolsParticipated}</p>
+          </div>
+          <div className="bg-gray-700 p-4 rounded-lg">
+            <p className="text-gray-400">Active Collateral</p>
+            <p className="text-2xl font-bold">{memberInfo.activeCollateral} SOL</p>
+          </div>
         </div>
       )}
 
-      {/* Contribution History with Glass Effect */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="bg-black/30 backdrop-blur-lg p-8 rounded-xl shadow-2xl border border-[#01CE8D]/20"
-      >
-        <h3 className="text-2xl font-semibold mb-6 text-[#01CE8D]">Contribution History</h3>
-        
-        {isLoading ? (
-          <div className="flex justify-center py-8">
-            <div className="animate-spin rounded-full h-12 w-12 border-2 border-[#01CE8D] border-t-transparent"></div>
-          </div>
-        ) : contributions.length > 0 ? (
-          <div className="space-y-6">
+      {/* Contribution History */}
+      <div className="bg-gray-700 p-6 rounded-lg shadow-lg">
+        <h3 className="text-xl font-semibold mb-4">Contribution History</h3>
+        {contributions.length > 0 ? (
+          <div className="space-y-4">
             {contributions.map((contribution, index) => (
-              <motion.div 
-                key={index}
-                whileHover={{ x: 5 }}
-                className="flex justify-between items-center border-b border-[#01CE8D]/10 pb-4"
-              >
+              <div key={index} className="flex justify-between items-center border-b border-gray-600 pb-2">
                 <div>
-                  <p className="font-medium text-lg">Contribution #{index + 1}</p>
+                  <p className="font-medium">Contribution</p>
                   <p className="text-sm text-gray-400">{contribution.timestamp}</p>
                 </div>
-                <div className="flex flex-col items-end">
-                  <span className="text-[#01CE8D] font-bold text-xl">{contribution.amount} SOL</span>
-                  <div className="mt-1 flex items-center">
-                    <span className="w-2 h-2 bg-[#01CE8D] rounded-full mr-2"></span>
-                    <span className="text-xs text-gray-400">Verified</span>
-                  </div>
-                </div>
-              </motion.div>
+                <span className="text-green-400 font-semibold">{contribution.amount} SOL</span>
+              </div>
             ))}
           </div>
         ) : (
-          <div className="py-12 text-center">
-            <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-[#01CE8D]/10 flex items-center justify-center">
-              <Wallet className="h-10 w-10 text-[#01CE8D]/50" />
-            </div>
-            <p className="text-xl font-medium text-gray-400">No contributions found</p>
-            <p className="text-sm text-gray-500 mt-2">Join a BlockCircle to make your first contribution</p>
-            <button className="mt-6 px-6 py-2 bg-gradient-to-r from-black to-[#01CE8D] rounded-full text-white font-semibold hover:shadow-lg hover:shadow-[#01CE8D]/20 transition-all duration-300">
-              Join a BlockCircle
-            </button>
-          </div>
+          <p className="text-center text-gray-400 py-4">No contributions found</p>
         )}
-      </motion.div>
+      </div>
 
       {error && (
-        <div className="bg-red-500/10 border border-red-500 text-red-500 px-6 py-4 rounded-lg">
+        <div className="bg-red-500 bg-opacity-10 border border-red-500 text-red-500 px-4 py-2 rounded">
           {error}
         </div>
       )}
@@ -1325,14 +1268,14 @@ function AuctionsContent({ contract, account }: any) {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#01CE8D] to-white">
+        <h2 className="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-orange-600">
           Auctions
         </h2>
         <button
           onClick={() => setIsModalOpen(true)}
-          className="px-6 py-3 bg-gradient-to-r from-black to-[#01CE8D] rounded-lg shadow-lg 
-                     hover:shadow-[#01CE8D]/30 hover:shadow-md transition-all duration-200 
-                     flex items-center space-x-2 border border-[#01CE8D]/30"
+          className="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg shadow-lg 
+                     hover:from-purple-600 hover:to-pink-600 transition-all duration-200 
+                     flex items-center space-x-2"
         >
           <span className="text-white font-semibold">Create BlockCircle</span>
           <Award className="h-5 w-5" />
@@ -1562,7 +1505,7 @@ function AuctionsContent({ contract, account }: any) {
 function LotteryContent({ contract, account }: any) {
   return (
     <div className="space-y-6">
-      <h2 className="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#01CE8D] to-white">Lottery</h2>
+      <h2 className="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-600">Lottery</h2>
       <div className="bg-gray-700 p-6 rounded-lg shadow-lg">
         <h3 className="text-xl font-semibold mb-4">Current Lottery</h3>
         <div className="bg-gray-600 p-4 rounded-lg">
@@ -1607,7 +1550,7 @@ function LotteryContent({ contract, account }: any) {
 function SettingsContent({ contract, account }: any) {
   return (
     <div className="space-y-6">
-      <h2 className="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#01CE8D] to-white">Settings</h2>
+      <h2 className="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-pink-600">Settings</h2>
       <div className="bg-gray-700 p-6 rounded-lg shadow-lg">
         <h3 className="text-xl font-semibold mb-4">Account Settings</h3>
         <form className="space-y-4">
@@ -1688,7 +1631,7 @@ function ProfileContent({ contract, account }: any) {
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-64">
-        <div className="animate-spin rounded-full h-16 w-16 border-2 border-[#01CE8D] border-t-transparent"></div>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
       </div>
     )
   }
@@ -1710,129 +1653,81 @@ function ProfileContent({ contract, account }: any) {
   }
 
   return (
-    <div className="space-y-8">
-      <h2 className="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#01CE8D] to-white">
+    <div className="space-y-6">
+      <h2 className="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-600">
         User Profile
       </h2>
 
-      {/* Profile Header with 3D Card */}
-      <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-black to-black/80 border border-[#01CE8D]/30 p-8 shadow-xl">
-        <div className="absolute -top-20 -right-20 w-64 h-64 bg-[#01CE8D]/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#01CE8D] to-transparent"></div>
-        
-        <div className="flex items-center space-x-4 relative z-10">
-          <div className="h-24 w-24 rounded-xl bg-gradient-to-br from-[#01CE8D] to-black flex items-center justify-center">
-            <User className="h-12 w-12 text-white" />
-          </div>
-          <div>
-            <h3 className="text-2xl font-bold">{`${account.slice(0, 6)}...${account.slice(-4)}`}</h3>
-            <div className="flex items-center mt-1">
-              <div className="w-2 h-2 rounded-full bg-[#01CE8D] mr-2"></div>
-              <span className="text-sm text-[#01CE8D]">Active Member</span>
-            </div>
-            <div className="mt-2 flex space-x-2">
-              <span className="px-3 py-1 text-xs bg-black/40 border border-[#01CE8D]/30 rounded-full">Member since {new Date().toLocaleDateString()}</span>
-              <span className="px-3 py-1 text-xs bg-[#01CE8D]/20 text-[#01CE8D] rounded-full">Reputation: {profileData.reputationPoints}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Profile Stats with Animated Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {[
           {
             title: 'Total Contributions',
             value: `${profileData.totalContributions} SOL`,
-            icon: <Wallet className="h-8 w-8" />,
+            icon: <Wallet className="h-6 w-6" />,
+            color: 'from-green-400 to-emerald-600'
           },
           {
             title: 'Reputation Points',
             value: profileData.reputationPoints,
-            icon: <Award className="h-8 w-8" />,
+            icon: <Award className="h-6 w-6" />,
+            color: 'from-yellow-400 to-orange-600'
           },
           {
             title: 'Active Collateral',
             value: `${profileData.activeCollateral} SOL`,
-            icon: <DollarSign className="h-8 w-8" />,
+            icon: <DollarSign className="h-6 w-6" />,
+            color: 'from-purple-400 to-pink-600'
           },
           {
             title: 'Active Pools',
             value: profileData.activePools,
-            icon: <Users className="h-8 w-8" />,
+            icon: <Users className="h-6 w-6" />,
+            color: 'from-blue-400 to-indigo-600'
           },
           {
             title: 'Cycles Contributed',
             value: profileData.cyclesContributed,
-            icon: <TrendingUp className="h-8 w-8" />,
+            icon: <TrendingUp className="h-6 w-6" />,
+            color: 'from-red-400 to-rose-600'
           },
           {
             title: 'Pools Participated',
             value: profileData.poolsParticipated,
-            icon: <BarChart className="h-8 w-8" />,
+            icon: <BarChart className="h-6 w-6" />,
+            color: 'from-teal-400 to-cyan-600'
           }
         ].map((item, index) => (
           <motion.div
             key={index}
-            whileHover={{ scale: 1.03, translateY: -5 }}
-            className="bg-black p-6 rounded-lg shadow-lg border border-[#01CE8D]/20 relative overflow-hidden"
+            whileHover={{ scale: 1.02 }}
+            className={`bg-gradient-to-br ${item.color} p-6 rounded-lg shadow-lg`}
           >
-            <div className="absolute top-0 left-0 w-2 h-full bg-[#01CE8D]"></div>
-            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#01CE8D]/5 rounded-full"></div>
-            
-            <div className="flex justify-between items-center relative z-10">
+            <div className="flex justify-between items-center">
               <div>
-                <p className="text-sm font-medium text-[#01CE8D]">{item.title}</p>
+                <p className="text-sm font-medium text-gray-100 opacity-80">{item.title}</p>
                 <p className="text-2xl font-bold text-white mt-2">{item.value}</p>
               </div>
-              <div className="bg-[#01CE8D]/10 text-[#01CE8D] p-3 rounded-full">
+              <div className="bg-white/20 p-3 rounded-full">
                 {item.icon}
               </div>
-            </div>
-            
-            <div className="w-full h-1 bg-[#01CE8D]/20 mt-6">
-              <motion.div 
-                className="h-1 bg-[#01CE8D]" 
-                initial={{ width: 0 }}
-                animate={{ width: `${Math.min(parseInt(profileData.reputationPoints) * 10, 100)}%` }}
-                transition={{ duration: 1 }}
-              ></motion.div>
             </div>
           </motion.div>
         ))}
       </div>
 
-      {/* Account Details Card with Glass Effect */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3 }}
-        className="mt-8 bg-black/30 backdrop-blur-sm p-8 rounded-xl shadow-xl border border-[#01CE8D]/30"
-      >
-        <h3 className="text-xl font-semibold mb-6 text-[#01CE8D]">Account Details</h3>
-        <div className="space-y-6">
-          <div className="flex justify-between items-center pb-4 border-b border-[#01CE8D]/20">
+      <div className="mt-8 bg-gray-700 p-6 rounded-lg shadow-lg">
+        <h3 className="text-xl font-semibold mb-4">Account Details</h3>
+        <div className="space-y-4">
+          <div className="flex justify-between items-center">
             <span className="text-gray-400">Wallet Address</span>
-            <span className="font-mono text-white bg-black/40 px-4 py-2 rounded-lg border border-[#01CE8D]/20">
-              {`${account.slice(0, 6)}...${account.slice(-4)}`}
-            </span>
-          </div>
-          <div className="flex justify-between items-center pb-4 border-b border-[#01CE8D]/20">
-            <span className="text-gray-400">Member Since</span>
-            <span className="text-white">{new Date().toLocaleDateString()}</span>
-          </div>
-          <div className="flex justify-between items-center pb-4 border-b border-[#01CE8D]/20">
-            <span className="text-gray-400">Total Cycles</span>
-            <span className="text-white">{profileData.cyclesContributed}</span>
+            <span className="font-mono">{`${account.slice(0, 6)}...${account.slice(-4)}`}</span>
           </div>
           <div className="flex justify-between items-center">
-            <span className="text-gray-400">Status</span>
-            <span className="px-4 py-1 bg-[#01CE8D]/20 text-[#01CE8D] rounded-full text-sm font-medium">
-              Active
-            </span>
+            <span className="text-gray-400">Member Since</span>
+            <span>{new Date().toLocaleDateString()}</span>
           </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   )
 }
